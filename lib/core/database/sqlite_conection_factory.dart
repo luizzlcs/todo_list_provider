@@ -49,9 +49,28 @@ class SqliteConectionFactory {
         _db = await openDatabase(
           databasePathFinal,
           version: _VERSION,
+          onConfigure: _onConfigure,
+          onCreate: _onCreate,
+          onUpgrade: _onUpgrade,
+          onDowngrade: _onDawGrade,
         );
       }
     });
     return _db!;
   }
+
+  // Criando método que fecha a conexão
+  void closeConnection() {
+    _db?.close();
+    _db = null;
+  }
+
+  // Métodos principais de configuração
+  Future<void> _onConfigure(Database db) async {
+    await db.execute('PRAGMA foreign_key = ON');
+  }
+
+  Future<void> _onCreate(Database db, int version) async {}
+  Future<void> _onUpgrade(Database db, int oldVersion, int version) async {}
+  Future<void> _onDawGrade(Database db, int oldVersion, int version) async {}
 }

@@ -72,6 +72,10 @@ class SqliteConectionFactory {
     await db.execute('PRAGMA foreign_key = ON');
   }
 
+  // Fazendo a implementação dos métodos.
+
+  // Esse primeiro método irá pecorrer todas as migration
+  // e de acordo com a versão irá executar apenas uma delas.
   Future<void> _onCreate(Database db, int version) async {
     final batch = db.batch();
 

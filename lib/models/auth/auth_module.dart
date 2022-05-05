@@ -6,6 +6,8 @@ import 'package:todo_list_provider/models/auth/login/login_page.dart';
 class authModule extends TodoListModule {
   authModule()
       : super(
+        // Aque vamos encontrar os bindings e as routers
+        // que módulo login precisa
           bindings: [
             ChangeNotifierProvider(
               create: (_) => LoginController(),

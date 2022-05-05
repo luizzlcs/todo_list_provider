@@ -1,6 +1,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:synchronized/synchronized.dart';
+import 'package:todo_list_provider/core/database/migration/migration.dart';
+import 'package:todo_list_provider/core/database/sqlite_migration_factory.dart';
 
 class SqliteConectionFactory {
   // Variaveis de representação do banco de dados.
@@ -70,7 +72,29 @@ class SqliteConectionFactory {
     await db.execute('PRAGMA foreign_key = ON');
   }
 
-  Future<void> _onCreate(Database db, int version) async {}
-  Future<void> _onUpgrade(Database db, int oldVersion, int version) async {}
+  Future<void> _onCreate(Database db, int version) async {
+    final batch = db.batch();
+
+    final migrations = SqliteMigrationFactory().getCreateMigration();
+
+    for (var migration in migrations) {
+      migration.create(batch);
+    }
+
+    batch.commit();
+  }
+
+  Future<void> _onUpgrade(Database db, int oldVersion, int version) async {
+    final batch = db.batch();
+
+    final migrations = SqliteMigrationFactory().getUpgradeMigration(oldVersion);
+
+    for (var migration in migrations) {
+      migration.update(batch);
+    }
+
+    batch.commit();
+  }
+
   Future<void> _onDawGrade(Database db, int oldVersion, int version) async {}
 }

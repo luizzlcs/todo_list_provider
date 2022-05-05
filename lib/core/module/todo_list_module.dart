@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:todo_list_provider/core/module/todo_list_page.dart';
 
 abstract class TodoListModule {
   final Map<String, WidgetBuilder> _routers;
@@ -15,6 +16,14 @@ abstract class TodoListModule {
         _bindings = bindings;
 
   Map<String, WidgetBuilder> get routers {
-    return {};
+    return _routers.map(
+      (key, pageBuilder) => MapEntry(
+        key,
+        (_) => TodoListPage(
+          bindings: _bindings,
+          page: pageBuilder,
+        ),
+      ),
+    );
   }
 }

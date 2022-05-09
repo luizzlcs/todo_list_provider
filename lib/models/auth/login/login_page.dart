@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_list_provider/core/wdget/todo_list_field.dart';
 import 'package:todo_list_provider/models/auth/login/login_controller.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
@@ -33,11 +34,14 @@ class LoginPage extends StatelessWidget {
                       child: Form(
                         child: Column(
                           children: [
-                            TextFormField(),
+                            TodoListField(label: 'E-mial'),
                             const SizedBox(
                               height: 20,
                             ),
-                            TextFormField(),
+                            TodoListField(
+                              label: 'Senha',
+                              obscureText: true,
+                            ),
                             const SizedBox(
                               height: 10,
                             ),
@@ -95,7 +99,10 @@ class LoginPage extends StatelessWidget {
                               children: [
                                 Text("Não tem conta?"),
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushNamed('/register');
+                                  },
                                   child: Text('Cadastre-se'),
                                 ),
                               ],

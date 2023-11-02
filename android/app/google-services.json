@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "939490668726",
+    "project_id": "todo-list-laos",
+    "storage_bucket": "todo-list-laos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939490668726:android:535f24d5c4119a32467617",
+        "android_client_info": {
+          "package_name": "br.com.academiadoflutter.todo_list_laos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJDmhbpwqO68OAGNa0EMfm4FwYfccfy2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939490668726:android:351433581ba669bf467617",
+        "android_client_info": {
+          "package_name": "com.example.yamol_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJDmhbpwqO68OAGNa0EMfm4FwYfccfy2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

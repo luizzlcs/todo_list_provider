@@ -53,8 +53,8 @@ class UserRepositoryImpl implements UserRepository {
       if (e.code == 'wrong-password') {
         throw AuthException(message: 'Login ou senha inválidos');
       }
-      // throw AuthException(message: e.message ?? 'Erro ao realizar logi');
-      return null;
+      throw AuthException(message: e.message ?? 'Erro ao realizar logi');
+      // return null;
     }
   }
 }
